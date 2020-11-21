@@ -23,3 +23,20 @@
  * 3. Методы должны возвращать из заданных свойств высоты и ширины Площадь и Периметр
  * 4. Формулы площади и периметра
  * */
+
+class Car // класс - шаблон
+{
+    public $color = ' red'; //свойство
+    public $model = 'Peugeot'; //свойство
+
+    /*public function auto()
+    {
+        $this->color;
+        $this->model;
+    }*/
+}
+
+$car = new Car(); // переменная $car хранит объект класса Car
+
+echo $car->model;
+echo $car->color;
