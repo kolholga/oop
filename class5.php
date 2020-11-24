@@ -57,4 +57,4 @@ $helper = new Helper();
 //echo $helper->setSum(4)->setSum(6)->setSum(12)->getSum(); // на каждом шаге превращается в объект
     //ИЛИ
 $helper->setSum(4)->setSum(6)->setSum(12);
-echo $helper->setSum();
+echo $helper->getSum();

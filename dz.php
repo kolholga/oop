@@ -1,5 +1,6 @@
 <?php
 
+//ДЗ №1
 /*
  * ДЗ №1
  * 1. Создать класс автомобиль (Car)
@@ -12,22 +13,9 @@
  * 5. Можно создать несколько машинок
  * */
 
+//РЕШЕНИЕ ДЗ №1
 /*
- * ДЗ №2
- * 1. Создать класс прямоугольник (Rectangle)
- *    свойства:
- *    - высота (height)
- *    - ширина (width)
- * (можно задать с помощью конструктора, либо самим прописать цифрами)
- * 2. Создать 2 метода:
- *    - getSquare() - площадь
- *    - getPerimeter() - периметр
- * 3. Методы должны возвращать из заданных свойств высоты и ширины Площадь и Периметр
- * 4. Формулы площади и периметра
- * */
-
-/*
-//ДЗ №1
+//РЕШЕНИЕ ДЗ №1
 class Car // класс - шаблон
 {
     private $color; //свойство
@@ -97,8 +85,24 @@ $car6->printCar();
 //echo $car->color;
 */
 
-/*
 //ДЗ №2
+/*
+ * ДЗ №2
+ * 1. Создать класс прямоугольник (Rectangle)
+ *    свойства:
+ *    - высота (height)
+ *    - ширина (width)
+ * (можно задать с помощью конструктора, либо самим прописать цифрами)
+ * 2. Создать 2 метода:
+ *    - getSquare() - площадь
+ *    - getPerimeter() - периметр
+ * 3. Методы должны возвращать из заданных свойств высоты и ширины Площадь и Периметр
+ * 4. Формулы площади и периметра
+ * */
+
+//РЕШЕНИЕ ДЗ №2
+/*
+//РЕШЕНИЕ ДЗ №2
 class Rectangle
 {
     private $width;
@@ -155,15 +159,173 @@ $rect3->getPerimeter();
 echo '<br>';
 */
 
+//ДЗ №3 от 23.11.2020
 /*ДЗ №3 от 23.11.2020
-//создать класс Employer
+//создать класс Employee
 //св-ва:
-//    -name - задать в конструкторе
-//    -age  - задать в конструкторе
+//    - name - задать в конструкторе
+//    - age  - задать в конструкторе
 //    - salary - зарплата (делаем СЕТТЕР и ГЕТТЕР)
 //все свойства приватные
-//создать несеолько работников ()объектов
+//создать несколько работников (объектов)
 //установить зарплату каждому
 //посчитать вне класса общую сумму заработных плат
 //проверить, чтобы возраст был от 18 до 60
+*/
+
+//РЕШЕНИЕ-1 ДЗ №3
+/*
+ * РЕШЕНИЕ-1 ДЗ №3
+class Employee
+{
+    private $name;
+    private $age;
+    private $salary;
+
+    public function __construct($n, $a)
+    {
+        if ($a >= 18 && $a <= 60) { //если возраст сотрудника от 18 до 60
+            $this->name = $n; //то устанавливаем значение в св-во $name
+            $this->age = $a; //то устанавливаем значение в св-во $age
+        } else {
+            echo 'Вы не можете быть нашим сотрудником и ';
+        }
+    }
+
+    public function getSalary() //метод getSalary() получает значения в св-во $salary
+    {
+        return $this->salary;
+    }
+
+    public function setSalary($sal) //метод setSalary() устанавливает значения в св-во $salary
+    {
+        if ($this->age >= 18 && $this->age <= 60) { //если возраст сотрудника от 18 до 60
+
+            if (is_int($sal)) { // то проверяем, если значение $sal - число
+                $this->salary = $sal; //то устанавливаем значение в св-во $salary
+            } else {
+                echo 'Введено неверное значение зарплаты' . '<br>';
+            }
+        } else {
+            echo 'Вам не положена зарплата' . '<br>';
+        }
+    }
+
+}
+
+$sum = [];
+
+$emp1 = new Employee('Olga', 41);
+$emp1->setSalary(1000);
+$sum[] = $emp1->getSalary();
+echo '<br>';
+
+$emp2 = new Employee('Dmitriy', 61);
+$emp2->setSalary(5000);
+$sum[] = $emp2->getSalary();
+echo '<br>';
+
+$emp3 = new Employee('Mariya', 38);
+$emp3->setSalary('jjj');
+$sum[] = $emp3->getSalary();
+echo '<br>';
+
+$emp4 = new Employee('Svetlana', 41);
+$emp4->setSalary(1500);
+$sum[] = $emp4->getSalary();
+echo '<br>';
+
+$emp5 = new Employee('Elena', 10);
+$emp5->setSalary(500);
+$sum[] = $emp5->getSalary();
+echo '<br>';
+
+echo 'Общая зарплата сотрудников, принятых на работу по допустимому возрасту = ' . array_sum($sum);
+*/
+
+//РЕШЕНИЕ-2 ДЗ №3
+/*
+ * РЕШЕНИЕ-2 ДЗ №3
+class Employee
+{
+    private $name;
+    private $age;
+    private $salary;
+
+    public function __construct($n, $a)
+    {
+        if ($a >= 18 && $a <= 60) { //если возраст сотрудника от 18 до 60
+            $this->name = $n; //то устанавливаем значение в св-во $name
+            $this->age = $a; //то устанавливаем значение в св-во $age
+        } else {
+            echo 'Вы не можете быть нашим сотрудником и ';
+        }
+    }
+
+    public function getSalary()
+    {
+        return $this->salary;
+    }
+
+    public function setSalary($sal)
+    {
+        if ($this->age >= 18 && $this->age <= 60) { //если возраст сотрудника от 18 до 60
+
+            if (is_int($sal)) { // то проверяем, если значение $sal - число
+                $this->salary = $sal; //то устанавливаем значение в св-во $salary
+            } else {
+                echo 'Введено неверное значение зарплаты' . '<br>';
+            }
+        } else {
+            echo 'Вам не положена зарплата' . '<br>';
+        }
+    }
+}
+
+class SumSalary //класс для подсчета суммы зарплат
+{
+    private $sumAr = [];
+
+    public function getSum() //метод getSum() - получает сумму элементов массива $sumAr
+    {
+        return array_sum($this->sumAr); //функция array_sum - считает сумму массива
+    }
+
+    public function setSum($s) //метод setSum() устанавливает значения в массив $sumAr
+    {
+        $this->sumAr[] = $s;
+        return $this; //возвращает ссылку на свой объект для построения цепочки
+    }
+}
+
+$sumArray = new SumSalary();
+
+$emp1 = new Employee('Olga', 41);
+$emp1->setSalary(1000);
+echo '<br>';
+
+$emp2 = new Employee('Dmitriy', 61);
+$emp2->setSalary(5000);
+echo '<br>';
+
+$emp3 = new Employee('Mariya', 38);
+$emp3->setSalary('jjj');
+echo '<br>';
+
+$emp4 = new Employee('Svetlana', 41);
+$emp4->setSalary(1500);
+echo '<br>';
+
+$emp5 = new Employee('Elena', 10);
+$emp5->setSalary(500);
+echo '<br>';
+
+$sumArray
+    ->setSum($emp1->getSalary())
+    ->setSum($emp2->getSalary())
+    ->setSum($emp3->getSalary())
+    ->setSum($emp4->getSalary())
+    ->setSum($emp5->getSalary());
+
+echo 'Общая зарплата сотрудников, принятых на работу по допустимому возрасту = ' . $sumArray->getSum();
 */
