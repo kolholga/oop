@@ -350,3 +350,99 @@ echo 'Общая зарплата сотрудников, принятых на 
 7. Вывести массив продуктов на страницу, используя
 	метод getProduct().
 */
+
+//ДЗ №4 - РЕШЕНИЕ
+/*
+//ДЗ №4 - РЕШЕНИЕ
+
+class Product
+{
+    protected $name;
+    protected $price;
+    protected $description;
+    protected $brand;
+
+    public function __construct($name, $price, $description, $brand)
+    {
+        $this->name = $name;
+        $this->price = $price;
+        $this->description = $description;
+        $this->brand = $brand;
+    }
+
+    public function getProduct()
+    {
+        echo '------------------------------------' . '<br>';
+        echo 'Наименование: ' . $this->name . '<br>';
+        echo 'Описание: ' . $this->description . '<br>';
+        echo 'Брэнд: ' . $this->brand . '<br>';
+        echo 'Цена: ' . $this->price . '<br>' . '<br>';
+    }
+}
+
+class Phone extends Product
+{
+    private $cpu;
+    private $ram;
+    private $countSim;
+    private $hdd;
+    private $os;
+
+    public function __construct($name, $price, $description, $brand,
+                                $cpu, $ram, $countSim, $hdd, $os)
+    {
+        parent::__construct($name, $price, $description, $brand);
+        $this->cpu = $cpu;
+        $this->ram = $ram;
+        $this->countSim = $countSim;
+        $this->hdd = $hdd;
+        $this->os = $os;
+    }
+
+    public function getProduct()
+    {
+        parent::getProduct();
+        echo 'Процессор: ' . $this->cpu . '<br>';
+        echo 'Память: ' . $this->ram . '<br>';
+        echo 'Количество сим-карт: ' . $this->countSim . '<br>';
+        echo 'Жесткий диск: ' . $this->hdd . '<br>';
+        echo 'Операционная система: ' . $this->os . '<br>';
+
+    }
+}
+
+class Monitor extends Product
+{
+    private $diagonal;
+    private $frequency;
+    private $ports;
+
+    public function __construct($name, $price, $description, $brand,
+                                $diagonal, $frequency, $ports)
+    {
+        parent::__construct($name, $price, $description, $brand);
+        $this->diagonal = $diagonal;
+        $this->frequency = $frequency;
+        $this->ports = $ports;
+    }
+
+    public function getProduct()
+    {
+        parent::getProduct();
+        echo 'Диагональ: ' . $this->diagonal . '<br>';
+        echo 'Частота: ' . $this->frequency . '<br>';
+        echo 'Количество входов: ' . $this->ports . '<br>';
+    }
+
+}
+
+$obj1 = new Phone('смартфон', '400$', 'А51', 'Самсунг',
+                1700, 2048, 2, 'hhhh', 'Android 10');
+$obj1->getProduct();
+
+echo '<br>';
+
+$obj2 = new Monitor('монитор', '1000$', '555', 'ЛОС',
+                    60, 80, 2);
+$obj2->getProduct();
+*/
