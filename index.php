@@ -1,4 +1,67 @@
 <?php
+
+require_once 'Control.php'; //подключили класс Control
+require_once 'Input.php'; //подключили класс Input
+require_once 'Button.php'; //подключили класс Button
+require_once 'Text.php'; //подключили класс Text
+require_once 'Label.php'; //подключили класс Label
+
+//instanceof //используется для определения того, является ли текущий объект экземпляром указанного класса.
+
+/**
+ * Формирует тег <input> на основе данных объекта
+ * @param $object
+ * @return string
+ */
+function convertToHTML($object)
+{
+    $str = '';
+
+    if($object instanceof Text){
+        $str .= '<label for="'.$object->getName().'"></label>';
+    }
+
+    $str .= '<input '; //долепливаем .=
+    if ($object instanceof Button) {
+        $str .= 'type="submit" ';
+    } elseif ($object instanceof Text) {
+        $str .= 'type="text" ';
+        $str .= 'placeholder="'.$object->getPlaceholder().'" ';
+    }
+
+    $str .= 'name="'.$object->getName().'" ';
+    $str .= 'value="'.$object->getValue().'" ';
+    $str .= 'style="background: '.$object->getBackground().'; width: '.$object->getWidth().'px; height: '.$object->getHeight().'px" ';
+    $str .= ' />';
+    return $str;
+}
+
+$control = new Control();
+$button_input = new Button('red', 70, 20, 'button', 'OK', true);
+$text_input = new Text('', 140, 30, 'text', '', 'Введите имя');
+
+echo convertToHTML($button_input);
+echo convertToHTML($text_input);
+
+/*
+echo '<pre>';
+var_dump(convertToHTML($button_input));
+echo '</pre>';
+*/
+
+/*
+//require_once 'Calculate.php'; //подключили класс Calculate
+
+// если НЕ статическая
+//$obj = new Calculate(); // если НЕ статическая
+//echo $obj->plus(5,7);
+
+// если статическая
+//echo Calculate::plus(5,7);
+*/
+
+//ТЕОРИЯ по ООП
+/*
 // класс - шаблон кода, который используется для создания объекта
 // при помощи ключевого слова класс
 // имя класса не должно начинаться с цифры
@@ -21,8 +84,9 @@
 
 //ИНКАПСУЛЯЦИЯ - свойство системы, позволяющее объеденить данные и методы работающие с ними(с этими данными),
                // а также скрыть детали реализации от пользователя
-
+*/
 ////////////////////////////////////////////
+/*
 class First // класс - шаблон
 {
     //тело класса
@@ -60,4 +124,8 @@ $obj->hello();
 
 //var_dump($obj);
 ?>
+*/
+
+
+
 
