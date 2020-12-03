@@ -5,6 +5,8 @@ require_once 'Input.php'; //подключили класс Input
 require_once 'Button.php'; //подключили класс Button
 require_once 'Text.php'; //подключили класс Text
 require_once 'Label.php'; //подключили класс Label
+require_once 'Radio.php'; //подключили класс Radio
+require_once 'Checkbox.php'; //подключили класс Checkbox
 
 //instanceof //используется для определения того, является ли текущий объект экземпляром указанного класса.
 
@@ -27,21 +29,35 @@ function convertToHTML($object)
     } elseif ($object instanceof Text) {
         $str .= 'type="text" ';
         $str .= 'placeholder="'.$object->getPlaceholder().'" ';
+    }elseif ($object instanceof Radio){
+        $str .= 'type="radio" ';
+    }elseif ($object instanceof Checkbox){
+        $str .= 'type="checkbox" ';
     }
 
     $str .= 'name="'.$object->getName().'" ';
     $str .= 'value="'.$object->getValue().'" ';
     $str .= 'style="background: '.$object->getBackground().'; width: '.$object->getWidth().'px; height: '.$object->getHeight().'px" ';
     $str .= ' />';
+
     return $str;
 }
 
 $control = new Control();
 $button_input = new Button('red', 70, 20, 'button', 'OK', true);
 $text_input = new Text('', 140, 30, 'text', '', 'Введите имя');
+$radio_input = new Radio('', 50, 50, 'jjj', '', true);
+$checkbox_input = new Checkbox('', 20, 30, 'ddd', 'kk', true);
 
-echo convertToHTML($button_input);
 echo convertToHTML($text_input);
+echo '<br> . <br>';
+echo convertToHTML($button_input);
+echo '<br> . <br>';
+echo convertToHTML($radio_input);
+echo '<br> . <br>';
+echo convertToHTML($radio_input);
+echo '<br> . <br>';
+echo convertToHTML($checkbox_input);
 
 /*
 echo '<pre>';
