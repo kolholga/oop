@@ -25,4 +25,5 @@ class Label extends Input
     {
         $this->for = $obj->getName();
     }
+
 }

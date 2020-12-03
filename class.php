@@ -1,9 +1,11 @@
 <?php
+
 //private - свойства и методы доступные только в этом/текущем классе
 class User
 {
     private $name; //свойство/ по умолчанию null
     private $age; //свойство/ по умолчанию null
+    //private const LOGIN = 'admin'; // константа принадлежит классу
 
     /*
     public function __construct($n, $a) //метод КОНСТРУКТОР // всегда!!! модификатор public по умолчанию
@@ -15,6 +17,7 @@ class User
 
     public function getAge() // ГЕТТЕР - метод для возвращения значения свойства age
     {
+        //self::LOGIN; - обращаемся к константе
         return $this->age;
     }
 
@@ -25,7 +28,7 @@ class User
 
     public function setAge($age) // СЕТТЕР - метод / устанавливает возраст
     {
-        if($age > 18 && $age < 60){
+        if ($age > 18 && $age < 60) {
             $this->age = $age;
         }
     }
@@ -42,9 +45,10 @@ class User
 //$man->age = '18';
 
 $man = new User; // сoздали объект User // если нет конструкторa, скобки можно не ставить
-$man->setAge( ' 25');
+$man->setAge(' 25');
 $man->setName(' Petya ');
 echo 'My name is ' . $man->getName() . "age" . $man->getAge() . ' years old <br>';
+//echo 'My login is ' . User::LOGIN;
 
 
 /*
