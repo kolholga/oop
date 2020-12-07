@@ -41,6 +41,24 @@
 //Абстрактный метод - метод, котрый не имеет реализации и д.б. реализован в классе-наследнике
 //Создавать объект абстрактнного класса НЕЛЬЗЯ!!!
 //Класс-наследник может реализовать не все абстрактные методы, но тогда он сам станет абстрактным
+
+//ИНТЕРФЕЙС:
+// ИНТЕРФЕЙС - по своей сути это класс, все методы которого не имеют реализации,
+             // а созданы для того, чтобы быть пепреопределенными в дочерних классах
+// класс, реализующий ИНТЕРФЕЙС, должен также реализовать все методы данного ИНТЕРФЕЙСА
+// у ИНТЕРФЕЙСА свойств не бывает
+// ИНТЕРФЕЙС не может иметь объектов
+// interface - ключевое слово для создания
+// implements - ключевого слово для подключения ИНТЕРФЕЙСА
+
+//ПРОСТРАНСТВО ИМЕН:
+// ПРОСТРАНСТВО ИМЕН - это область определения классов, функций и констант,
+                      //ограничивающая область их видимости
+                      //и предоставляющая возможность группировать их логически между собой
+// namespace - ключевое слово для создания ПРОСТРАНСТВА ИМЕН (регистро-независим)
+// до объявления ПРОСТРАНСТВА ИМЕН не должно быть никакого вывода на экран, ни тегов, ни...
+// ПРОСТРАНСТВО ИМЕН может быть составным и чаще всего повторяет путь // н-р, namespace oop\app
+
 */
 
 
@@ -53,11 +71,30 @@ require_once 'Label.php'; //подключили класс Label
 require_once 'Radio.php'; //подключили класс Radio
 require_once 'Checkbox.php'; //подключили класс Checkbox
 require_once 'Point.php'; //подключили класс Point
+require_once 'PointInterface.php'; //подключили класс PointInterface // д.б. подключен до класса Circle2 (типа его родитель)
 require_once 'Circle2.php'; //подключили класс Circle2
 require_once 'Rectangle2.php'; //подключили класс Rectangle2
 require_once 'Calculate.php'; //подключили класс Calculate
+require_once 'app/lib/User.php'; //подключили класс User, который лежит в прстранстве имен Ddd\fff
+require_once 'User.php'; //подключили класс User
 
 //instanceof //используется для определения того, является ли текущий объект экземпляром указанного класса.
+
+use Ddd\fff\User;
+$user = new User();
+echo '<br>';
+$user2 = new \User();
+
+/*
+$user = new User(); // User - глобальное пространство имен
+echo '<br>';
+$user = new Ddd\fff\User(); // Ddd\fff\User - пространство имен Ddd\fff
+*/
+
+/*
+$c = new Circle2(2,4,20);
+echo $c->area();
+*/
 
 /**
  * Формирует тег <input> на основе данных объекта
@@ -93,6 +130,9 @@ function convertToHTML($object)
     return $str;
 }
 */
+
+/*
+echo '<form>';
 
 echo 'Введите ФИО: ';
 echo '<br>';
@@ -135,9 +175,9 @@ echo 'Ваш пол: ';
 echo '<br>';
 
 $radio = new Radio('', 15,15, 'check', '', ' муж',true);
-$r = $radio->convertToHTML();
+//$r = $radio->convertToHTML();
 
-$label = new Label('', 120,20, 'lab', '', $r);
+$label = new Label('', 120,20, 'lab', '', $radio->convertToHTML());
 echo $label->convertToHTML();
 echo '<br>';
 
@@ -152,6 +192,10 @@ $object = new Button('red',100,30,'submit','Отправить', true);
 echo $object->convertToHTML();
 echo '<br><br>';
 
+echo '</form>';
+*/
+
+//(new Select());
 
 /*
 $control = new Control();
@@ -211,13 +255,15 @@ echo '</pre>';
 //echo Calculate::plus(5,7);
 */
 
+/*
 echo 'Сумма чисел 5 и 7 = ' . Calculate::plus(5,7);
 echo '<br>';
 echo 'Разность чисел 5 и 7 = ' . Calculate::minus(5,7);
 echo '<br>';
-echo 'Результат деления: ' . Calculate::multiplication(5,7);
+echo 'Результат умножения: ' . Calculate::multiplication(5,7);
 echo '<br>';
 Calculate::division(25,5);
+*/
 
 ////////////////////////////////////////////
 

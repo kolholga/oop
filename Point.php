@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class Point
+/*abstract*/ class Point
 {
     protected $x;
     protected $y;
@@ -23,7 +23,7 @@ abstract class Point
         return 0;
     }
     */
-    abstract public function area(); //АБСТРАКТНЫЙ метод
+    //abstract public function area(); //АБСТРАКТНЫЙ метод
 
     /*
     public function perimeter()
@@ -31,5 +31,5 @@ abstract class Point
         return 0;
     }
     */
-    abstract public function perimeter(); //АБСТРАКТНЫЙ метод
+    //abstract public function perimeter(); //АБСТРАКТНЫЙ метод
 }

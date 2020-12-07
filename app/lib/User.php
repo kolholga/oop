@@ -1,5 +1,6 @@
 <?php
 
+namespace Ddd\fff;
 //private - свойства и методы доступные только в этом/текущем классе
 class User
 {
@@ -7,13 +8,19 @@ class User
     private $age; //свойство/ по умолчанию null
     //private const LOGIN = 'admin'; // константа принадлежит классу
 
-    /*
+/*
     public function __construct($n, $a) //метод КОНСТРУКТОР // всегда!!! модификатор public по умолчанию
     {
         $this->age = $a;
         $this->name = $n;
     }
-    */
+*/
+
+    public function __construct()
+    {
+        echo 'Я нахожусь в пространстве имен \Ddd\fff';
+    }
+
 
     public function getAge() // ГЕТТЕР - метод для возвращения значения свойства age
     {
@@ -44,10 +51,12 @@ class User
 //$man->name = 'Вася';
 //$man->age = '18';
 
+/*
 $man = new User; // сoздали объект User // если нет конструкторa, скобки можно не ставить
 $man->setAge(' 25');
 $man->setName(' Petya ');
 echo 'My name is ' . $man->getName() . "age" . $man->getAge() . ' years old <br>';
+*/
 //echo 'My login is ' . User::LOGIN;
 
 

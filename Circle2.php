@@ -1,7 +1,7 @@
 <?php
 
 
-class Circle2 extends Point
+class Circle2 extends Point implements PointInterface //implements PointInterface  - подключили интерфейс
 {
     private $r; //радиус
 
@@ -18,11 +18,11 @@ class Circle2 extends Point
 
     public function area()
     {
-        return 3.14 * $this->r * $this->r;
+        return PointInterface::PI * $this->r * $this->r; // PointInterface::PI - подключили константу из ИНТЕРФЕЙСА
     }
 
     public function perimeter()
     {
-        return 2 * 3.14 * $this->r;
+        return 2 * PointInterface::PI * $this->r;
     }
 }

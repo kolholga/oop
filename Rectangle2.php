@@ -1,7 +1,7 @@
 <?php
 
 
-class Rectangle2 extends Point
+class Rectangle2 extends Point implements PointInterface // implements PointInterface  - подключили интерфейс
 {
     private $w; //ширина
     private $h; //высота

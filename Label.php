@@ -28,9 +28,10 @@ class Label extends Input
 
     public function convertToHTML()
     {
-     //<label><input type="..."> Текст</label>
-        //return '<input type="button" name="" value="" style="background: red; height: 1px; width: 1px" />'; //шаблон
+        //шаблон
+        //<label><input type="..."> Текст</label>
         $str = '';
+
         $str .= '<label>';
         $str .= $this->for;
         $str .= '</label>';
