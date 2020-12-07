@@ -23,4 +23,19 @@ class Calculate
     {
         return $a - $b;
     }
+
+    public static function multiplication ($a, $b)
+    {
+        return $a * $b;
+    }
+
+    public static function division ($a, $b)
+    {
+        if($b != 0){
+            echo 'Результат деления: ' . $a / $b;
+        }else{
+            echo ' На 0 делить нельзя!';
+        }
+
+    }
 }

@@ -55,6 +55,7 @@ require_once 'Checkbox.php'; //подключили класс Checkbox
 require_once 'Point.php'; //подключили класс Point
 require_once 'Circle2.php'; //подключили класс Circle2
 require_once 'Rectangle2.php'; //подключили класс Rectangle2
+require_once 'Calculate.php'; //подключили класс Calculate
 
 //instanceof //используется для определения того, является ли текущий объект экземпляром указанного класса.
 
@@ -93,17 +94,64 @@ function convertToHTML($object)
 }
 */
 
+echo 'Введите ФИО: ';
+echo '<br>';
+
+$input = new Text('',150,30,'text','', 'Введите фамилию');
+echo $input->convertToHTML();
+echo '<br>';
+
+$input = new Text('',150,30,'text','', 'Введите имя');
+echo $input->convertToHTML();
+echo '<br>';
+
+$input = new Text('',150,30,'text','', 'Введите отчество');
+echo $input->convertToHTML();
+echo '<br><br>';
+
+echo 'Ваш город: ';
+echo '<br>';
+
+
+$select = new Select('', 120,20, 'sel', ['Брест','Витебск','Гомель','Гродно','Минск','Могилев']);
+echo $select->convertToHTML();
+echo '<br><br>';
+
+$checkbox = new Checkbox('', 15,15, 'check', '', ' Вы принимаете лицензионное соглашение.',true);
+$c = $checkbox->convertToHTML();
+
+$label = new Label('', 120,20, 'lab', '', $c);
+echo $label->convertToHTML();
+echo '<br>';
+
+$checkbox = new Checkbox('', 15,15, 'check', '', ' Вам есть 18',true);
+$c1 = $checkbox->convertToHTML();
+
+$label = new Label('', 120,20, 'lab', '', $c1);
+echo $label->convertToHTML();
+echo '<br><br>';
+
+echo 'Ваш пол: ';
+echo '<br>';
+
+$radio = new Radio('', 15,15, 'check', '', ' муж',true);
+$r = $radio->convertToHTML();
+
+$label = new Label('', 120,20, 'lab', '', $r);
+echo $label->convertToHTML();
+echo '<br>';
+
+$radio = new Radio('', 15,15, 'check', '', ' жен',true);
+$r1 = $radio->convertToHTML();
+
+$label = new Label('', 120,20, 'lab', '', $r1);
+echo $label->convertToHTML();
+echo '<br><br>';
+
 $object = new Button('red',100,30,'submit','Отправить', true);
 echo $object->convertToHTML();
 echo '<br><br>';
 
-$input = new Text('',100,30,'text','', 'Введите текст');
-echo $input->convertToHTML();
-echo '<br><br>';
-
-$select = new Select('', 120,20, 'sel', [1,2,3]);
-echo $select->convertToHTML();
-echo '<br><br>';
 
 /*
 $control = new Control();
@@ -163,6 +211,13 @@ echo '</pre>';
 //echo Calculate::plus(5,7);
 */
 
+echo 'Сумма чисел 5 и 7 = ' . Calculate::plus(5,7);
+echo '<br>';
+echo 'Разность чисел 5 и 7 = ' . Calculate::minus(5,7);
+echo '<br>';
+echo 'Результат деления: ' . Calculate::multiplication(5,7);
+echo '<br>';
+Calculate::division(25,5);
 
 ////////////////////////////////////////////
 
