@@ -1,5 +1,6 @@
 <?php
 
+namespace public_class_dz_101220;
 
 class Articles extends Publication //статьи
 {

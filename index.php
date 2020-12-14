@@ -1,16 +1,59 @@
 <?php
+session_start(); // стартуем СЕССИЮ
+//session_destroy(); //убить СЕССИЮ
 
 use app\lib\Library;
 
+use public_class_dz_101220\News; //деректива use для пространства имен public_class
+use public_class_dz_101220\Announcements;
+use public_class_dz_101220\Articles;
+
+// Распечатали $_SERVER
+/*
+echo '<pre>';
+print_r($_SERVER);
+echo '</pre>';
+
+die();
+*/
+
+//ФУНКЦИЯ ДЛЯ АВТОЗАГРУЗКИ:
+///////////////////////////////////////////////////////////////
 //@param $class - В параметр приходит имя класса с пространством имен
 function auto_load($class) // наша функция для автозагрузки // в auto_load($class) прилетает(скармливаем) app\lib\Library
 {
+    $str = $_SERVER['DOCUMENT_ROOT'] . '/';
+    $str .= str_replace('\\', '/', $class); // меняем слеши // функция str_replace(что менять, на что менять, где менять)
+    $str .= '.php';
 
-    $str = str_replace('\\', '/', $class); // меняем слеши // функция str_replace(что менять, на что менять, где менять)
-    require_once $str . '.php';
+    if(is_file($str)){ // is_file - Определяет, является ли файл обычным файлом
+        require_once $str;
+    }
+    //echo $str;
 }
 
-spl_autoload_register('auto_load'); //spl_autoload_register - функция автозагрузки: принимает аргументом другую функцию
+spl_autoload_register('auto_load'); //spl_autoload_register - ФУНКЦИЯ АВТОЗАГРУЗКИ: принимает аргументом другую функцию
+//////////////////////////////////////////////////////////////////
+//$lib = new Library();
+
+//ПАПКА classes/cart:
+
+//$prod1 = new \classes\cart\Product('apple',100,1);
+//$prod2 = new \classes\cart\Product('peach',200,4);
+//$prod3 = new \classes\cart\Product('potato',500,5);
+
+$cart = new \classes\cart\Cart();
+//$cart->addToCart($prod1);
+//$cart->addToCart($prod2);
+//$cart->addToCart($prod3);
+
+$cart->getCart();
+
+/*
+echo '<pre>';
+print_r($_SESSION['cart']);
+echo '</pre>';
+*/
 
 //ТЕОРИЯ по ООП
 /*
@@ -353,11 +396,11 @@ foreach ($arItems as $item){
 }
 
 echo $total;
-*/
+
 
 //$p = new Point(2,4);
 //$p->show();
-
+*/
 
 /*
 echo '<pre>';
@@ -386,13 +429,15 @@ echo '<br>';
 Calculate::division(25,5);
 */
 
-//ДЗ от 10.12.2020
-
+//ДЗ от 10.12.2020 (ПАПКА public_class_dz_101220):
+/*
 $obj = [];
 
 $obj[] = new Articles(
     'Особенности PHP8',
-    'PHP 8.0 - это крупное обновление языка PHP. Он содержит множество новых функций и оптимизаций, включая именованные аргументы, типы объединения, атрибуты, продвижение свойств конструктора, выражение соответствия, безопасный оператор NULL, JIT и улучшения в системе типов, обработке ошибок и согласованности.',
+    'PHP 8.0 - это крупное обновление языка PHP. Он содержит множество новых функций и оптимизаций,' . '<br>' .
+             'включая именованные аргументы, типы объединения, атрибуты, продвижение свойств конструктора,' . '<br>' .
+              'выражение соответствия, безопасный оператор NULL, JIT и улучшения в системе типов, обработке ошибок и согласованности.',
     'Vasya');
 
 $obj[] = new Announcements(
@@ -408,6 +453,7 @@ $obj[] = new News(
 foreach ($obj as $item) {
     $item->show();
 }
+*/
 
 ////////////////////////////////////////////
 

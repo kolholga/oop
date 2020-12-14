@@ -1,5 +1,7 @@
 <?php
 
+namespace public_class_dz_101220;
+
 abstract class Publication
 {
     protected $title; //заголовок

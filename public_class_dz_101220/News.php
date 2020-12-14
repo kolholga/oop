@@ -1,5 +1,6 @@
 <?php
 
+namespace public_class_dz_101220;
 
 class News extends Publication //новости
 {
