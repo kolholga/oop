@@ -37,7 +37,7 @@ spl_autoload_register('auto_load'); //spl_autoload_register - ФУНКЦИЯ А�
 //$lib = new Library();
 
 //ПАПКА classes/cart:
-
+/*
 //$prod1 = new \classes\cart\Product('apple',100,1);
 //$prod2 = new \classes\cart\Product('peach',200,4);
 //$prod3 = new \classes\cart\Product('potato',500,5);
@@ -48,6 +48,21 @@ $cart = new \classes\cart\Cart();
 //$cart->addToCart($prod3);
 
 $cart->getCart();
+*/
+
+//ДЗ от 14.12.2020 (ПАПКА cart):
+
+//$town1 = new \town\Town('Vitebsk', 974, 2000);
+//$town2 = new \town\Town('Minsk', 1025, 10000);
+//$town3 = new \town\Town('Grodno', 1111, 5000);
+
+$country = new \town\Country();
+//$country->addTown($town1);
+//$country->addTown($town2);
+//$country->addTown($town3);
+
+$country->getCountryList();
+
 
 /*
 echo '<pre>';

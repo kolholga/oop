@@ -17,7 +17,7 @@ class Cart
         }
     }
 
-    public function addToCart(Product $product) //Product $product - указываем тип аргумента аргуметом (можно передать только объект класса Product)
+    public function addToCart(Product $product) //Product $product - указываем тип аргумента (можно передать только объект класса Product)
     {
         $this->listCart[] = $product;
         $_SESSION['cart'][] = serialize($product); //сохраняем так же и в СЕССИИ объект, преобразованный (serialize) в строку // serialize - превращает объект в строку
