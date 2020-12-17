@@ -21,7 +21,7 @@ class Country
     public function addTown(Town $town)  //метод добавления города (можно передать только объект класса Town)
     {
         $this->listTown[] = $town;
-        $_SESSION['country'][] = serialize($town); //сохраняем так же и в СЕССИИ объект, преобразованный (serialize) в строку // serialize - превращает объект в строку
+        $_SESSION['country'][] = serialize($town); //сохраняем так же и в СЕССИИ объект // serialize - превращает объект в строку
     }
 
     public function getCountryList()
