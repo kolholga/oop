@@ -37,8 +37,69 @@ function auto_load($class) // наша функция для автозагру�
 spl_autoload_register('auto_load'); //spl_autoload_register - ФУНКЦИЯ АВТОЗАГРУЗКИ: принимает аргументом другую функцию
 //////////////////////////////////////////////////////////////////
 //$lib = new Library();
+////////////////////////////////////////////
+
+//класс Form + User
+
+$mysql = new mysqli('localhost', 'root', 'root', 'test'); //подключаемся к базе данных, возвращается(создается) объект
+
+// получаем информацию об ошибках
+if ($mysql->connect_error) { //connect_error - свойство, хранит TRUE или FALSE
+    die('Ошибка подключения (' . $mysql->connect_errno . ') '
+        . $mysql->connect_error);
+}
+
+$user = new User($mysql);
+
+// вызываем метод регистрации
+//if (isset($_REQUEST['submit'])) {
+//    $login = $_REQUEST['inputLogin']; // ключ, то что в name
+//    $pass = $_REQUEST['inputPassword'];
+//    //echo $user->register(['login' => 'Sam', 'password' => '55555555555555']); //шаблон
+//    echo $user->register(['login' => $login, 'password' => $pass]);
+//
+//}
+
+// вызываем метод авторизации
+if (isset($_REQUEST['submit'])) {
+    $login = $_REQUEST['inputLogin']; // ключ, то что в name
+    $pass = $_REQUEST['inputPassword'];
+    //echo $user->register(['login' => 'Sam', 'password' => '55555555555555']); //шаблон
+    $user->auth(['login' => $login, 'password' => $pass]);
+
+}
+
+//echo '<pre>';
+//print_r($_REQUEST); // в массив $_REQUEST попадают данные и методом post, и методом get
+//echo '</pre>';
+
+$form = new Form();
+
+echo $form->beginForm();
+
+echo 'Введите логин: ';
+echo '<br>';
+echo $form->input(['type' => 'text', 'name' => 'inputLogin', 'id' => 'inp']);
+echo '<br>';
+echo '<br>';
+
+echo 'Введите пароль: ';
+echo '<br>';
+echo $form->input(['type' => 'password', 'name' => 'inputPassword', 'id' => 'pass']);
+echo '<br>';
+echo '<br>';
+
+//echo 'Выберите город';
+//echo '<br>';
+//echo $form->select(['name' => 'city'],['Москва' => 'Москва', 'Воронеж' => 'Воронеж']);
+//echo '<br>';
+
+echo $form->button(['type' => 'submit', 'name' => 'submit'], 'Отправить');
+
+echo $form->endForm();
 
 //БАЗА ДАННЫХ Mysqli:
+/*
 // https://www.php.net/manual/ru/class.mysqli.php
 
 $mysql = new mysqli('localhost','root', 'root','test'); //подключаемся к базе данных, возвращается(создается) объект
@@ -70,7 +131,7 @@ echo $user->update(4, ['login' => 'Kolya', 'password' => '0987']); // вызва
 //print_r($res->fetch_assoc()); // возвращает следующую(третью) найденную запись(одну), при этом сдвигает указатель на следующую
 //echo '<br>';
 //var_dump($res->fetch_assoc()); // возвращает следующую(третью) найденную запись(одну), при этом сдвигает указатель на следующую
-
+*/
 //-----------------------------------------------------------------------------
 //ИСКЛЮЧЕНИЯ:
 /*

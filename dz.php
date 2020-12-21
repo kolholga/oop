@@ -562,3 +562,27 @@ listItems. (н-р, внутри конструктора $user = new \Ddd\fff\Us
 
 6. Добавить несколько городов. Вывести.
 */
+
+//
+/*
+1.создать класс Form
+ $form = new Form();
+
+ echo $form->input();
+*/
+?>
+
+<form action="" method="" enctype="multipart/form-data">
+
+    <input type="text" name="text"/>
+
+        <select name="">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+             <option value="4">4</option>
+        </select>
+
+    <button>Ok</button>
+
+</form>

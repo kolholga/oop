@@ -10,7 +10,7 @@ class User
     public $password;
     protected $mysql;
 
-    public function __construct(mysqli $mysql, $login, $password) //mysqli $mysql - передаем объект класса mysqli
+    public function __construct(mysqli $mysql, $login = '', $password = '') //mysqli $mysql - передаем объект класса mysqli
     {
         //ИСКЛЮЧЕНИЯ:
         /*
@@ -88,7 +88,41 @@ class User
      */
     public function getById($id)
     {
+        $sql = "SELECT `login` FROM `users` WHERE `id`=" . $id;
+        return $this->mysql->query($sql);
+    }
 
+    public function getByLogin($login)
+    {
+        $sql = "SELECT * FROM `users` WHERE `login`='" . $login . "'";
+        return $this->mysql->query($sql);
+    }
+
+    public function register($userParam) // регистрация // $userParam - массив login password
+    {
+        $resCheckUser = $this->getByLogin($userParam['login']);
+
+        if ($resCheckUser->num_rows > 0) {
+            return 'Такой пользователь уже есть в базе';
+        } else {
+            //$sql = "INSERT INTO `users` SET `login` = '', `password` = ''"; //шаблон
+            $sql = "INSERT INTO `users` SET `login` = '" . $userParam['login'] . "', `password` = '" . md5($userParam['password']) . "'";
+            $this->mysql->query($sql);
+            return 'Вы успешно зарегистрированы';
+        }
+    }
+
+    public function auth($userParam) // авторизация // $userParam - массив login password
+    {
+        $login = htmlspecialchars($userParam['login']);
+        $pass = md5($userParam['password']);
+        //$sql = "SELECT * FROM `users` WHERE `login` = '' AND `password` = ''"; //шаблон
+        $sql = "SELECT * FROM `users` WHERE `login` = '" . $login . "' AND `password` = '" . $pass . "'";
+        if ($this->mysql->query($sql)->num_rows > 0) {
+            echo 'Пользователь авторизован';
+        } else {
+            echo 'Не правильно введены данные';
+        }
     }
 }
 
