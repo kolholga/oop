@@ -119,9 +119,21 @@ class User
         //$sql = "SELECT * FROM `users` WHERE `login` = '' AND `password` = ''"; //шаблон
         $sql = "SELECT * FROM `users` WHERE `login` = '" . $login . "' AND `password` = '" . $pass . "'";
         if ($this->mysql->query($sql)->num_rows > 0) {
+            $_SESSION['login'] = $login;
             echo 'Пользователь авторизован';
         } else {
-            echo 'Не правильно введены данные';
+            echo 'Неправильно введены данные';
+        }
+    }
+
+    static public function isAuth()
+    {
+        $mysql = new mysqli('localhost', 'root', 'root', 'test');
+        $user = new self($mysql, '22222222');
+        echo $user->login;
+
+        if(isset($_SESSION['login'])){
+            return true;
         }
     }
 }

@@ -1,5 +1,5 @@
 <?php
-session_start(); // стартуем СЕССИЮ
+//session_start(); // стартуем СЕССИЮ
 //session_destroy(); //убить СЕССИЮ
 
 use app\lib\Library;
@@ -39,14 +39,32 @@ spl_autoload_register('auto_load'); //spl_autoload_register - ФУНКЦИЯ А�
 //$lib = new Library();
 ////////////////////////////////////////////
 
-//класс Form + User
+//класс Session + Flash + Cookie
 
+$ses = new Session();
+$fl = new Flash($ses);
+
+$fl->setMessage('hhhh', '55555');
+echo $fl->getMessage('hhhh');
+
+//Cookie::setCookie('exmpl', 'yes'); //устанавливаем имя и значение в куку
+//echo Cookie::getCookie('exmpl'); //получаем значение $value куки по ключу $name
+
+die();
+
+
+//класс Form + User
+/*
 $mysql = new mysqli('localhost', 'root', 'root', 'test'); //подключаемся к базе данных, возвращается(создается) объект
 
 // получаем информацию об ошибках
 if ($mysql->connect_error) { //connect_error - свойство, хранит TRUE или FALSE
     die('Ошибка подключения (' . $mysql->connect_errno . ') '
         . $mysql->connect_error);
+}
+
+if (User::isAuth()) { //обращаемся к статическому методу isAuth класса User до получения объекта класса User (при обращении к статическому методу объект создавать не нужно)
+    echo 'Привет, ' . $_SESSION['login'];
 }
 
 $user = new User($mysql);
@@ -97,6 +115,7 @@ echo '<br>';
 echo $form->button(['type' => 'submit', 'name' => 'submit'], 'Отправить');
 
 echo $form->endForm();
+*/
 
 //БАЗА ДАННЫХ Mysqli:
 /*
